@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+printf "\033c"
+if ! type flatpak >/dev/null 2>&1; then
+	apt-get --yes update
+	apt-get --yes install flatpak
+	if ! type flatpak-xdg-utils >/dev/null 2>&1; then
+		apt-get --yes update
+		apt-get --yes install flatpak-xdg-utils
+		if ! type xdg-desktop-portal >/dev/null 2>&1; then
+			apt-get --yes update
+			apt-get --yes install xdg-desktop-portal
+			if ! type xdg-desktop-portal-gtk >/dev/null 2>&1; then
+				apt-get --yes update
+				apt-get --yes install xdg-desktop-portal-gtk
+				if type gnome-software >/dev/null 2>&1; then
+					apt-get --yes update
+					apt-get --yes install gnome-software-plugin-flatpak xdg-desktop-portal-gnome
+					if type plasma-discover >/dev/null 2>&1; then
+						apt-get --yes update
+						apt-get --yes install plasma-discover-backend-flatpak xdg-desktop-portal-kde
+						if type ubuntukylin-keyring >/dev/null 2>&1; then
+							apt-get --yes update
+							apt-get --yes install ubuntu-kylin-software-center
+						fi
+					fi
+				fi
+			fi
+		fi
+	fi
+fi
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+printf "\033c"
+echo -e ""
+echo -e "Successfully installed Flatpak with required integrations & enabled the Flathub repo."
+echo -e ""
+read -rsp $'Press any key to continue...\n' -n1
+printf "\033c"
+exit 0
