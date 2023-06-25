@@ -10,7 +10,7 @@ All official flavors of **Ubuntu** will stop including **Flatpak** by default fr
 Installing the **flatpak** package in any **Ubuntu** based distribution is relatively straight forward but installing **Flatpak** with necessary **software center** and **desktop** integrations can be tricky for many users. `flatjak` makes this task as easy as possible, even for new users. `flatjak` also enables the all important **Flathub** repository.  
 
 ## How to install and use flatjak?  
-It's easy-peasy to install `flatjak`. Just download flatjak-main zip, extract its contents and copy the file `flatjak` to **/usr/local/bin/** directory,  
+It's easy-peasy to install `flatjak`. Just download the [flatjak-main] zip, extract its contents and copy the file `flatjak` to **/usr/local/bin/** directory,  
 
 ```bash
 sudo cp flatjak /usr/local/bin/
