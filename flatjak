@@ -1,5 +1,21 @@
 #!/usr/bin/env bash
+
+if [ "$EUID" -ne 0 ]; then
+	printf "\033c"
+	echo -e ""
+	{ for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; }
+	echo -e ""
+	echo -e '\e[38;5;82m' "You must run \"flatjak\" script using \"sudo\" or as the root user."
+	echo -e '\e[38;5;82m' "Hint : \"sudo flatjak\" or \"su -c 'flatjak'\""
+	echo -e ""
+	{ for i in {16..51} {51..16}; do echo -en "\e[38;5;${i}m#\e[0m"; done; echo; }
+	echo -e ""
+	tput sgr0
+	exit 1
+fi
+
 printf "\033c"
+
 if ! type flatpak >/dev/null 2>&1; then
 	apt-get --yes update
 	apt-get --yes install flatpak
@@ -28,11 +44,15 @@ if ! type flatpak >/dev/null 2>&1; then
 		fi
 	fi
 fi
+
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
 printf "\033c"
+
 echo -e ""
-echo -e "Successfully installed Flatpak with required integrations & enabled the Flathub repo."
+echo -e "Flatpak is installed with required integrations & the Flathub repository."
 echo -e ""
 read -rsp $'Press any key to continue...\n' -n1
+
 printf "\033c"
 exit 0
