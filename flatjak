@@ -50,7 +50,9 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 printf "\033c"
 
 echo -e ""
-echo -e "Flatpak is installed with required integrations & the Flathub repository."
+echo -e "Flatpak is installed with required desktop integrations and the Flathub repository."
+echo -e ""
+echo -e "If Flatpak applications don't show up in GNOME Software or Discover please rebooot."
 echo -e ""
 read -rsp $'Press any key to continue...\n' -n1
 
