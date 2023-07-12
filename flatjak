@@ -47,6 +47,9 @@ fi
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
+update-mime-database /usr/share/mime
+update-desktop-database /usr/share/applications
+
 printf "\033c"
 
 echo -e ""
